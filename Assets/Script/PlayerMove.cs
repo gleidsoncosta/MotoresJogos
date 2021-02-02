@@ -37,8 +37,14 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if(other.transform.tag == "obstaculo"){
-            SceneManager.LoadScene("controles");
+        if(other.transform.tag == "chao"){
+            Debug.Log("Colidiu com o chao" + other.transform.name);
+        }
+    }
+
+    private void OnCollisionStay(Collision other) {
+        if(other.transform.tag == "chao"){
+            Debug.Log("Esta colidindo com o chao" + other.transform.name);
         }
     }
 
