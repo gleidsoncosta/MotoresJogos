@@ -7,11 +7,14 @@ public class PlayerMove : MonoBehaviour
 {
     public Vector3 vel;
     public Rigidbody _rigidbody;
+    public Animator _anim;
+    public AudioSource _sfx;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _sfx = GetComponent<AudioSource>();
         Physics.gravity = new Vector3(0.0f, -9.81f, 0.0f) * 8.0f;
     }
 
@@ -32,6 +35,8 @@ public class PlayerMove : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)){
             _rigidbody.velocity = new Vector3(0.0f, vel.y, 0.0f);
+            _anim.SetTrigger("Pulo");
+            _sfx.Play();
         }
 
     }
