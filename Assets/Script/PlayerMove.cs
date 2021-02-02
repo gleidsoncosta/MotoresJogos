@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Physics.gravity = Physics.gravity * 4;
+        Physics.gravity = new Vector3(0.0f, -9.81f, 0.0f) * 8.0f;
     }
 
     // Update is called once per frame
@@ -37,14 +37,8 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if(other.transform.tag == "chao"){
-            Debug.Log("Colidiu com o chao" + other.transform.name);
-        }
-    }
-
-    private void OnCollisionStay(Collision other) {
-        if(other.transform.tag == "chao"){
-            Debug.Log("Esta colidindo com o chao" + other.transform.name);
+        if(other.transform.tag == "obstaculo"){
+            SceneManager.LoadScene("controles");
         }
     }
 
